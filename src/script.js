@@ -154,3 +154,74 @@
 // }, 1000);
 
 
+                    // Урок 9.2
+
+
+// const promise = new Promise((resolve, reject) => {
+//      reject("Woops")
+// })
+
+// promise.then(value => console.log(value));
+
+
+// const promise = new Promise((resolve, reject) => {
+//     resolve("Woops")
+// })
+
+// promise.then(value => console.log(value));
+
+
+// const promise = new Promise((resolve, reject) => {
+//     reject("Woops")
+// })
+
+// promise.catch(err => console.log(err));
+
+
+// const promise = new Promise((resolve) => {
+//     resolve(10)
+// })
+
+// promise
+//        .then(value => {
+//              return new Promise (resolve => {
+//                 resolve(value * 2)
+//                })
+//             })
+
+//         .then(value => console.log(value));
+
+
+
+//Приклад роботи синхронного та асинхронного JS
+
+
+// console.log("A");
+
+// setTimeout(() => {
+//     console.log("B");
+// }, 0)
+
+// Promise.resolve("C")
+//        .then(data => console.log(data));
+
+// console.log("D");
+
+
+                                      //Promise
+
+//Створення Promise
+
+const promise = new Promise((resolve, reject) => {
+    const random = Math.random() * 2000;
+
+    setTimeout(() => {
+        if(random > 1000){
+             resolve("Drink beer")
+        } else {
+            reject("Go home")
+        }
+    }, 2000)
+})
+
+console.log(promise);

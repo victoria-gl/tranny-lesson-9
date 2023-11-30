@@ -212,16 +212,220 @@
 
 //Створення Promise
 
-const promise = new Promise((resolve, reject) => {
-    const random = Math.random() * 2000;
+// const loading = document.querySelector(".loading")
+// const content = document.querySelector(".content")
 
-    setTimeout(() => {
-        if(random > 1000){
-             resolve("Drink beer")
+// const promise = new Promise((resolve, reject) => {
+//     const random = Math.random() * 2000;
+//     loading.textContent = "Loading..."
+
+//     setTimeout(() => {
+//         if(random > 1000){
+//              resolve("Drink beer")
+//         } else {
+//             reject("Go home")
+//         }
+//     }, 2000)
+// })
+
+// console.log(promise);
+
+// promise 
+//       .then(data => {
+//               loading.textContent = ""
+//             //   content.textContent = data
+
+//       })
+//       .catch(error => {
+//              loading.textContent = "";
+//             //  content.textContent = error
+//       })
+//       .finally(() => {
+//         loading.textContent = "";
+//       })
+
+
+//Обробка Propmise
+
+// promise 
+//       .then(data => {
+//               loading.textContent = ""
+//             //   content.textContent = data
+
+//       })
+//       .catch(error => {
+//              loading.textContent = "";
+//             //  content.textContent = error
+//       })
+//       .finally(() => {
+//         loading.textContent = "";
+//       })
+
+
+
+// const result = new Promise((resolve, reject) => {
+//     const random = Math.random();
+
+//      setTimeout(() => {
+//                 if(random > 1000){
+//                      resolve("resolve")
+//                 } else {
+//                     reject("reject")
+//                 }
+//             }, 2000)
+
+// })
+
+// result
+//      .then(res => console.log(res))
+//      .catch(error => console.log(error))
+
+
+//1)  const test = () => {
+//     console.log("ok");
+// }
+
+// test();
+
+
+//2)  const test = () => {
+//     return "ok"
+// }
+
+// console.log(test());
+
+
+//3)  const test = () => {
+//     return new Promise(resolve => {
+//         resolve("ok")
+//     })
+// }
+
+// console.log(test());
+
+
+//4)  const test = (time) => {
+//     return new Promise(resolve => {
+//         resolve(time)
+//     })
+// }
+
+// console.log(test(1000));
+
+
+//5)   const test = (time) => {
+//     return new Promise(resolve => {
+//         resolve(time)
+//     })
+// }
+
+// test(1000)
+//        .then(data => console.log(data))
+
+
+
+// const test = time => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve(time), time)
+//     })
+// }
+
+// test (1000)
+//         .then(result => console.log(result))
+
+
+// test (3000)
+//         .then(result => console.log(result))
+
+
+// Promise.all([test(1000), test(3000)])
+//          .then(data => console.log(data))
+
+
+// Promise.all([test(3000), test(1000), test(2000)])
+//          .then(data => console.log(data))
+//          .catch(error => console.log(error))
+
+
+
+// const result = new Promise((resolve, reject) => {
+//     const random = Math.random();
+
+//     setTimeout(() => {
+//         if(random > 0.5){
+//             resolve("resolve")
+//         } else {
+//             reject("reject")
+//         }
+//     }, 2000)
+// })
+
+// Promise.all([result, result])
+//         .then(data => console.log(data))
+//         .catch(error => console.log(error))
+
+
+
+// const test = function (time) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve(time), time)
+//     })
+// }
+
+// Promise.race([test(1000), test(3000)]) - повертає той, який виконується швидше. Навіть, якщо він повертається з помилкою
+//     .then(data => console.log(data))
+//     .catch(err => console.log("error", err))
+
+
+
+
+// ****************************Практика************************* \\
+// Наше завдання написати програмне забезпечення для ігрового автомата
+// Для вирішення завдання використай готову розмітку HTML
+// та базову стилізацію
+// Після натиснення на кнопку "Start game" в кожному віконці по
+// черзі має з'являтись смайлик з затримкою в 1 секунду
+// ('🤑' або '👿')
+// Під час обробки кожного віконця створи масив з Promis-ами
+// в якому кожен з них буде відповідати за своє віконце,
+// після чого оброби даний масив за допомогою методу
+// Promise.allSettled
+// Після того як всі віконця були заповнені потрібно щоб скріпт
+// автоматично визначав чи гравець переміг, чи ні.
+// Якщо в кожному віконці однаковий смайлик це означає що користувач
+// переміг
+// Виводить модальне вікно з повідомленням про статус гри
+// ('Winner' або 'Loser')
+// Для модального вікна використовуй бібліотеку basicLightbox
+// Після повторного натискання на кнопку "Start game"
+// поле має очищатись, а гра починатись з початку.
+
+
+const startBtn = document.querySelector(".js-start");
+const container = document.querySelector(".js-container");
+
+startBtn.addEventListener("click", handleStart)
+
+function handleStart() {
+    const promise = [...container.children].map(() => createPromise())
+
+    Promise.allSettled(promise)
+              .then(items => {
+                   console.log(items);
+              })
+            //   .catch()
+}
+
+function createPromise() {
+    return new Promise((resolve, reject) => {
+        const random = Math.random()
+
+        if(random > 0.5){
+            resolve("🤑")
         } else {
-            reject("Go home")
+            reject("👿")
         }
-    }, 2000)
-})
+     })
+}
 
-console.log(promise);
+

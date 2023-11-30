@@ -411,9 +411,24 @@ function handleStart() {
 
     Promise.allSettled(promise)
               .then(items => {
-                   console.log(items);
+                const isWinner = items.every(item => item.status === "fulfilled") || items.every(item => item.status === "rejected");
+
+                   items.forEach((item, i) => {
+                    container.children[i].textContent = "";
+
+                    setTimeout(() => {
+                        container.children[i].textContent = item.value || item.reason
+
+                        if(i === items.length - 1){
+                            const instance = basicLightbox.create(`
+                            <h1>${isWinner ? "Winner" : "Loser"}</h1>
+                            `)
+         
+                            instance.show()
+                        } 
+                    }, 1000 * (i + 1));  
+                   })      
               })
-            //   .catch()
 }
 
 function createPromise() {

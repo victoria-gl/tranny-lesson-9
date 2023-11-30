@@ -99,47 +99,58 @@
 // Потрібно створити два приклади годинника 
 // (Електронний та механічний)
 
-const arrDay = ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П`ятниця', 'Субота'];
-const namesOfMonth = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
+// const arrDay = ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П`ятниця', 'Субота'];
+// const namesOfMonth = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'];
 
-const selectors = {
-       day: document.querySelector(".date-day"),
-       date: document.querySelector(".date"),
-       month: document.querySelector(".date-month"),
-       year: document.querySelector(".date-year"),
-       clock: document.querySelector(".digital-clock"),
-       seconds: document.querySelector(".clock-seconds__arrow"),
-       minutes: document.querySelector(".clock-minutes__arrow"),
-       hours: document.querySelector(".clock-hours__arrow"),
-};
+// const selectors = {
+//        day: document.querySelector(".date-day"),
+//        date: document.querySelector(".date"),
+//        month: document.querySelector(".date-month"),
+//        year: document.querySelector(".date-year"),
+//        clock: document.querySelector(".digital-clock"),
+//        seconds: document.querySelector(".clock-seconds__arrow"),
+//        minutes: document.querySelector(".clock-minutes__arrow"),
+//        hours: document.querySelector(".clock-hours__arrow"),
+// };
 
-setInterval(() => {
-    const currentDate = new Date()
-    // console.log(currentDate);
+// setInterval(() => {
+//     const currentDate = new Date()
+//     // console.log(currentDate);
 
-    const day = currentDate.getDay();
-    // console.log(day);
+//     const day = currentDate.getDay();
+//     // console.log(day);
 
-    const date = currentDate.getDate()
-    // console.log(date);
+//     const date = currentDate.getDate()
+//     // console.log(date);
 
-    const month = currentDate.getMonth()
-    // console.log(month);
+//     const month = currentDate.getMonth()
+//     // console.log(month);
 
-    const year = currentDate.getFullYear();
-    // console.log(year);
+//     const year = currentDate.getFullYear();
+//     // console.log(year);
 
 
-    const localeTime = currentDate.toLocaleTimeString("fr-FR");
-    // console.log(localeTime);
+//     const localeTime = currentDate.toLocaleTimeString("fr-FR");
+//     // console.log(localeTime);
 
-    selectors.day.textContent = arrDay[day];
-    selectors.month.textContent = namesOfMonth[month];
-    selectors.date.textContent = date;
-    selectors.year.textContent = year;
-    selectors.clock.textContent = `Поточний час ${localeTime}`
+//     selectors.day.textContent = arrDay[day];
+//     selectors.month.textContent = namesOfMonth[month];
+//     selectors.date.textContent = date;
+//     selectors.year.textContent = year;
+//     selectors.clock.textContent = `Поточний час ${localeTime}`;
 
-}, 1000);
+//     const hours = currentDate.getHours();
+//     const minutes = currentDate.getMinutes();
+//     const seconds = currentDate.getSeconds();
 
+//     const secondsDeg = 360 / 60 * seconds;
+//     const minutesDeg = 360 / 60 * minutes;
+//     const hoursDeg = 360 / 12 * hours + (360 / 12 / 60) * minutes;
+
+//     selectors.seconds.style.transform = `rotate(${secondsDeg}deg)`;
+//     selectors.minutes.style.transform = `rotate(${minutesDeg}deg)`;
+//     selectors.hours.style.transform = `rotate(${hoursDeg}deg)`;
+
+// }, 1000);
 
 

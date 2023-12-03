@@ -401,46 +401,46 @@
 // поле має очищатись, а гра починатись з початку.
 
 
-const startBtn = document.querySelector(".js-start");
-const container = document.querySelector(".js-container");
+// const startBtn = document.querySelector(".js-start");
+// const container = document.querySelector(".js-container");
 
-startBtn.addEventListener("click", handleStart)
+// startBtn.addEventListener("click", handleStart)
 
-function handleStart() {
-    const promise = [...container.children].map(() => createPromise())
+// function handleStart() {
+//     const promise = [...container.children].map(() => createPromise())
 
-    Promise.allSettled(promise)
-              .then(items => {
-                const isWinner = items.every(item => item.status === "fulfilled") || items.every(item => item.status === "rejected");
+//     Promise.allSettled(promise)
+//               .then(items => {
+//                 const isWinner = items.every(item => item.status === "fulfilled") || items.every(item => item.status === "rejected");
 
-                   items.forEach((item, i) => {
-                    container.children[i].textContent = "";
+//                    items.forEach((item, i) => {
+//                     container.children[i].textContent = "";
 
-                    setTimeout(() => {
-                        container.children[i].textContent = item.value || item.reason
+//                     setTimeout(() => {
+//                         container.children[i].textContent = item.value || item.reason
 
-                        if(i === items.length - 1){
-                            const instance = basicLightbox.create(`
-                            <h1>${isWinner ? "Winner" : "Loser"}</h1>
-                            `)
+//                         if(i === items.length - 1){
+//                             const instance = basicLightbox.create(`
+//                             <h1>${isWinner ? "Winner" : "Loser"}</h1>
+//                             `)
          
-                            instance.show()
-                        } 
-                    }, 1000 * (i + 1));  
-                   })      
-              })
-}
+//                             instance.show()
+//                         } 
+//                     }, 1000 * (i + 1));  
+//                    })      
+//               })
+// }
 
-function createPromise() {
-    return new Promise((resolve, reject) => {
-        const random = Math.random()
+// function createPromise() {
+//     return new Promise((resolve, reject) => {
+//         const random = Math.random()
 
-        if(random > 0.5){
-            resolve("🤑")
-        } else {
-            reject("👿")
-        }
-     })
-}
+//         if(random > 0.5){
+//             resolve("🤑")
+//         } else {
+//             reject("👿")
+//         }
+//      })
+// }
 
 
